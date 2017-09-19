@@ -25,7 +25,8 @@ class UAEPPExtension implements ExtensionInterface
     private $logger;
 
     /**
-     * @param string $uri URI of the RGP extension
+     * @param string          $uri    URI of the UAEPP extension
+     * @param LoggerInterface $logger instance of logger object
      */
     public function __construct($uri, LoggerInterface $logger)
     {
