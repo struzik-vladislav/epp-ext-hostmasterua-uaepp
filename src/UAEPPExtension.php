@@ -2,33 +2,26 @@
 
 namespace Struzik\EPPClient\Extension\HostmasterUA\UAEPP;
 
-use Struzik\EPPClient\Extension\ExtensionInterface;
-use Struzik\EPPClient\EPPClient;
-use Struzik\EPPClient\Response\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Struzik\EPPClient\EPPClient;
+use Struzik\EPPClient\Extension\ExtensionInterface;
+use Struzik\EPPClient\Response\ResponseInterface;
 
 /**
  * UAEPP extension provided by Hostmaster (https://hostmaster.ua/).
  */
 class UAEPPExtension implements ExtensionInterface
 {
-    const NS_NAME_UAEPP = 'uaepp';
+    public const NS_NAME_UAEPP = 'uaepp';
 
-    /**
-     * @var string
-     */
-    private $uri;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private string $uri;
+    private LoggerInterface $logger;
 
     /**
      * @param string          $uri    URI of the UAEPP extension
      * @param LoggerInterface $logger instance of logger object
      */
-    public function __construct($uri, LoggerInterface $logger)
+    public function __construct(string $uri, LoggerInterface $logger)
     {
         $this->uri = $uri;
         $this->logger = $logger;
@@ -37,7 +30,7 @@ class UAEPPExtension implements ExtensionInterface
     /**
      * {@inheritdoc}
      */
-    public function setupNamespaces(EPPClient $client)
+    public function setupNamespaces(EPPClient $client): void
     {
         $client->getExtNamespaceCollection()
             ->offsetSet(self::NS_NAME_UAEPP, $this->uri);
@@ -46,15 +39,13 @@ class UAEPPExtension implements ExtensionInterface
     /**
      * {@inheritdoc}
      */
-    public function handleResponse(ResponseInterface $response)
+    public function handleResponse(ResponseInterface $response): void
     {
-        if (!in_array($this->uri, $response->getUsedNamespaces())) {
+        if (!in_array($this->uri, $response->getUsedNamespaces(), true)) {
             $this->logger->debug(sprintf(
-                'Namespace with URI \'%s\' does not exists in used namespaces in the response object.',
+                'Namespace with URI "%s" does not exists in used namespaces in the response object.',
                 $this->uri
             ));
-
-            return;
         }
     }
 }
