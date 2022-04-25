@@ -19,12 +19,7 @@ class UAEPPDeleteHost implements RequestAddonInterface
      */
     public function build(RequestInterface $request): void
     {
-        $extensionNodeList = $request->getDocument()->getElementsByTagName('extension');
-        $extensionNode = $extensionNodeList->count() > 0 ? $extensionNodeList->item(0) : null;
-        if ($extensionNode === null) {
-            $extensionNode = ExtensionNode::create($request);
-        }
-
+        $extensionNode = ExtensionNode::create($request);
         $uaeppDeleteNode = UAEPPDeleteNode::create($request, $extensionNode);
         UAEPPDeleteNSNode::create($request, $uaeppDeleteNode);
     }

@@ -3,13 +3,13 @@
 namespace Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Tests\Request\Addon;
 
 use Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Request\Addon\UAEPPCreateLicense;
-use Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Tests\EPPTestCase;
+use Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Tests\UAEPPTestCase;
 use Struzik\EPPClient\Node\Domain\DomainContactNode;
 use Struzik\EPPClient\Node\Domain\DomainPeriodNode;
 use Struzik\EPPClient\Request\Domain\CreateDomainRequest;
 use Struzik\EPPClient\Request\Domain\Helper\HostObject;
 
-class UAEPPCreateLicenseTest extends EPPTestCase
+class UAEPPCreateLicenseTest extends UAEPPTestCase
 {
     public function testCreate(): void
     {
@@ -18,7 +18,7 @@ class UAEPPCreateLicenseTest extends EPPTestCase
 <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
   <command>
     <create>
-      <domain:create xmlns:domain="http://hostmaster.ua/epp/domain-1.1">
+      <domain:create xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name>example1.ua</domain:name>
         <domain:period unit="y">2</domain:period>
         <domain:ns>

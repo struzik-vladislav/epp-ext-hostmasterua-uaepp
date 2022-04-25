@@ -3,10 +3,10 @@
 namespace Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Tests\Request\Addon;
 
 use Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Request\Addon\UAEPPUpdateLicense;
-use Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Tests\EPPTestCase;
+use Struzik\EPPClient\Extension\HostmasterUA\UAEPP\Tests\UAEPPTestCase;
 use Struzik\EPPClient\Request\Domain\UpdateDomainRequest;
 
-class UAEPPUpdateLicenseTest extends EPPTestCase
+class UAEPPUpdateLicenseTest extends UAEPPTestCase
 {
     public function testUpdate(): void
     {
@@ -15,7 +15,7 @@ class UAEPPUpdateLicenseTest extends EPPTestCase
 <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
   <command>
     <update>
-      <domain:update xmlns:domain="http://hostmaster.ua/epp/domain-1.1">
+      <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name>example1.ua</domain:name>
       </domain:update>
     </update>

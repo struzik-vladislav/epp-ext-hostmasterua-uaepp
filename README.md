@@ -1,8 +1,8 @@
 # HostmasterUA UAEPP Extension for EPP Client
 
-UAEPP extension who was provided by Hostmaster (https://hostmaster.ua/).
+UAEPP extension provided by [HostmasterUA](https://hostmaster.ua/).
 
-Extension for `struzik-vladislav/epp-client` library.
+Extension for [struzik-vladislav/epp-client](https://github.com/struzik-vladislav/epp-client) library.
 
 ## Usage
 ```php
